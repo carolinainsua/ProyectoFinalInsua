@@ -1,36 +1,17 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import cartContext from "../../context/cartContext";
-import { createOrder } from "../../data/firebase";
 
 function CartContainer() {
   const { cartItems, removeItem, calculateTotalCart, clearCart } = useContext(cartContext);
+  const navigate = useNavigate();
 
-  const handlePurchase = async () => {
+  const handleGoToCheckout = () => {
     if (cartItems.length === 0) {
       alert("El carrito está vacío");
       return;
     }
-
-    const orderData = {
-      buyer: { name: "Luciano", email: "luciano@luciano", phone: "123456" },
-      items: cartItems.map(item => ({
-        id: item.id,
-        title: item.title,
-        price: item.precio,
-        count: item.count,
-      })),
-      total: calculateTotalCart(),
-      date: new Date(),
-    };
-
-    try {
-      const docRef = await createOrder(orderData);
-      alert(`Orden creada con ID: ${docRef.id}`);
-      clearCart();
-    } catch (error) {
-      console.error("Error al crear la orden:", error);
-      alert("Hubo un error al crear la orden");
-    }
+    navigate("/checkout"); // redirige al formulario de checkout
   };
 
   return (
@@ -52,7 +33,7 @@ function CartContainer() {
             </div>
           ))}
           <h2>TOTAL: ${calculateTotalCart()}</h2>
-          <button onClick={handlePurchase}>¡Comprar!</button>
+          <button onClick={handleGoToCheckout}>¡Comprar!</button>
         </div>
       )}
     </div>

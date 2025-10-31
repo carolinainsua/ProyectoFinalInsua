@@ -1,5 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { collection, getDocs, getDoc, doc, getFirestore, where, query, addDoc } from "firebase/firestore";
+import products from "./products";
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyCs_3VXnNVEg6h48N_BOoGyrdyGsJmsFx4",
@@ -46,5 +48,17 @@ export async function createOrder(orderData) {
   console.log("Orden creada con ID:", newDoc.id);
   return newDoc;
 }
+
+export async function exportProductsData() {
+  const productsRef = collection(db, "products")
+
+  for( let item of products){
+    delete item.id;
+    const docCreated = await addDoc(productsRef, item)
+    console.log("Creado el doc", docCreated.id)
+  }
+  
+}
+
 
 export default app;

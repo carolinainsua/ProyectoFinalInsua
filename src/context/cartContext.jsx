@@ -5,7 +5,6 @@ const cartContext = createContext();
 export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
 
-  // Agregar producto al carrito
   function addToCart(newItem) {
     const newCartItems = structuredClone(cartItems);
     const index = newCartItems.findIndex(item => Number(item.id) === Number(newItem.id));
@@ -20,13 +19,11 @@ export function CartProvider({ children }) {
     alert(`¡Agregaste ${newItem.title} al carrito!`);
   }
 
-  // Contar ítems en el carrito
-  function countItems() {
+    function countItems() {
     return cartItems.reduce((count, item) => count + item.count, 0);
   }
 
-  // Remover un item
-  function removeItem(idRemove) {
+   function removeItem(idRemove) {
     let newCartItems = structuredClone(cartItems);
     const itemInCart = cartItems.find(item => item.id === idRemove);
 
@@ -40,12 +37,10 @@ export function CartProvider({ children }) {
     setCartItems(newCartItems);
   }
 
-  // Calcular total del carrito
   function calculateTotalCart() {
     return cartItems.reduce((total, item) => total + item.precio * item.count, 0);
   }
 
-  // Limpiar carrito
   function clearCart() {
     setCartItems([]);
   }

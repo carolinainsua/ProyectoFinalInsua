@@ -29,8 +29,8 @@ useEffect(() => {
     })
     .catch((err) => {
       console.error(err);
-      setProducts([]); // opcional: limpiar productos
-      setError(err);   // muestra "Categoría no encontrada"
+      setProducts([]); 
+      setError(err);   
       setLoading(false);
     });
 }, [categParam]);

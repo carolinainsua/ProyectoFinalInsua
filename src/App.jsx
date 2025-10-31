@@ -6,7 +6,8 @@ import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailCont
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "./context/cartContext";
 import CartContainer from "./components/CartConteiner/CartContainer";
-import app, { getProducts } from "./data/firebase";
+import app, { exportProductsData, getProducts } from "./data/firebase";
+import CheckoutForm from "./components/CartConteiner/FormCheckout";
 
 
 function App() {
@@ -18,26 +19,13 @@ function App() {
     <CartProvider>
       <BrowserRouter>
         <NavBar />
-        <Routes>
-          <Route
-            path="/"
-            element={<ItemListContainer h2="Hola, bienvenido usuario." />}
-          ></Route>
-          <Route
-            path="/detail/:idParam"
-            element={<ItemDetailContainer />}
-          ></Route>
-          <Route
-            path="/category/:categParam"
-            element={<ItemListContainer />}
-          ></Route>
-          <Route
-            path="/cart"
-            element={<CartContainer />}
-          ></Route>
-          <Route
-            path="/*"
-            element={<h1>404: Página no encontrada.</h1>}
+                <Routes>
+          <Route path="/" element={<ItemListContainer h2="Hola, bienvenido usuario." />}></Route>
+          <Route path="/detail/:idParam" element={<ItemDetailContainer />}></Route>
+          <Route path="/category/:categParam" element={<ItemListContainer />}></Route>
+          <Route path="/cart" element={<CartContainer />}></Route>
+          <Route path="/checkout" element={<CheckoutForm />} />
+          <Route path="/*" element={<h1>404: Página no encontrada.</h1>}
           ></Route>
         </Routes>
       </BrowserRouter>
