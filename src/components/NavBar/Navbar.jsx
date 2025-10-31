@@ -1,5 +1,7 @@
-import logo from "./img/logo-thegermen.png";
-import cart from "./img/cart.png";
+import './NavBar.css'
+import CartWidget from '../CartWidget/CartWidget';
+import { Link } from 'react-router';
+
 
 function NavBar() {
   return (
@@ -7,28 +9,24 @@ function NavBar() {
       <nav>
         <div className="navBar"> 
           <div className="navBarItem"> {/* LOGO */}
-            {" "}
-            <img src={logo} alt="Logo, The Germen" />{" "}
+                    <Link to="./">  <img src="/img/logo-thegermen.png" alt="Logo, The Germen" /> </Link>
           </div>
           <div className="navBarItem"> {/* CATEGORIAS */}
             {" "}
             <ul className="categorias">
               <li>
-                <a href="./pufferbags.jsx">PufferBags</a>
+                <Link to="/category/pufferbag">PufferBags</Link>
               </li>
               <li>
-                <a href="./totebags.jsx">ToteBags</a>
+                <Link to="/category/totebag">ToteBags</Link>
               </li>
               <li>
-                <a href="./upcycling.jsx">Upcycling</a>
+                <Link to="/category/upcycling">Upcycling</Link>
               </li>
             </ul>
           </div>
-          <div className="navBarItem"> {/* CARRITO */}
-            {" "}
-            <a href="">
-              <img src={cart} alt="Carrito" />
-            </a>{" "}
+          <div className="navBarItem"> 
+            <CartWidget/>
           </div>
         </div>
       </nav>

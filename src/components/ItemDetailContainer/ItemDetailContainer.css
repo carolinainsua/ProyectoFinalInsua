@@ -1,0 +1,41 @@
+.h1Detail {
+    font-size: 50px;
+    text-align: left;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+    justify-content: left;
+    }
+    
+
+.item{
+height: 60vh;
+padding: 20px;
+}
+
+.pDetail {
+    text-align: left;
+    width: 70%;
+}
+
+.imgDetail{
+    height: 100%;
+    border-radius: 20px;
+}
+
+.precioDetail {
+    font-size: 30px;
+    text-align: left;
+    }
+
+.buttonDetail{
+max-width: 600px;
+width: 100%;
+font-family: sono;
+color: #0d0d0d;
+padding: 5px 35px 5px 35px;
+background-color: #5ab53c;
+padding-bottom: 5px;
+}
